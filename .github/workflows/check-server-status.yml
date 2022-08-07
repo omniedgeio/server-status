@@ -39,4 +39,7 @@ jobs:
               nc -z -v -u "$ip" ${server_port} &>/dev/null && echo " is Online" || echo " is Offline"
             fi
           done
-
+      - name: check website status
+        run: |
+          date
+          status=$(curl -sI  https://omniedge.io | head -1 | awk '{print $2}'); [ $status -eq 200 ] && echo "OmniEdge.io is online."  || echo "OmniEdge.io is offline"
