@@ -1,0 +1,42 @@
+name: omniedge
+env:
+  server_ips: ${{ secrets.SERVER_IPS }}
+  server_port: ${{ secrets.PORT }}
+  server_porthk: ${{ secrets.PORTHK }}
+on:
+  push:
+    branches:
+      - main
+  schedule:
+  - cron: "0 */5 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: install network tools
+        run: |
+          sudo -E apt-get -y update
+          sudo -E apt-get install -y net-tools
+
+      - name: OmniEdge for Github Action
+        uses: omniedgeio/github-action@v1
+        with:
+          securitykey: ${{ secrets.OMNIEDGE_SECURITY_KEY }}
+          virtualnetworkid: ${{ secrets.OMNIEDGE_VIRTUALNETWORK_ID }}
+
+      - name: check server status
+        run: |
+          date
+          echo "${server_ips}" | while read name ip; 
+          do
+            echo -n "Checking $name "
+            if [ "$name" = "HongKong-CN," ]; then
+              nc -z -v -u "$ip" ${server_porthk} &>/dev/null && echo "is Online" || echo "is Offline"
+            else
+              nc -z -v -u "$ip" ${server_port} &>/dev/null && echo " is Online" || echo " is Offline"
+            fi
+          done
+
