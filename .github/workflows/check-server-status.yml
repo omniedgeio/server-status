@@ -26,20 +26,36 @@ jobs:
         with:
           securitykey: ${{ secrets.OMNIEDGE_SECURITY_KEY }}
           virtualnetworkid: ${{ secrets.OMNIEDGE_VIRTUALNETWORK_ID }}
-
+          
       - name: check server status
+        id: check-server-status
         run: |
-          date
+          rm README.md && touch README.md
+          echo "# Server Status" | tee -a README.md
+          echo "Check omniedge supernodes' status by OmniEdge for Github Action" | tee -a README.md
+          echo "## Public Supernode Status: " | tee -a README.md
+          date | tee -a README.md
           echo "${server_ips}" | while read name ip; 
           do
-            echo -n "Checking $name "
+            echo -n "- $name "
             if [ "$name" = "HongKong-CN," ]; then
-              nc -z -v -u "$ip" ${server_porthk} &>/dev/null && echo "is Online" || echo "is Offline"
+              nc -z -v -u -q 10 "$ip" ${server_porthk} &>/dev/null && echo "is Online ! :white_check_mark: " || echo "is Offline ! :x:"
             else
-              nc -z -v -u "$ip" ${server_port} &>/dev/null && echo " is Online" || echo " is Offline"
+              nc -z -v -u -q 10 "$ip" ${server_port} &>/dev/null && echo " is Online  ! :white_check_mark:" || echo " is Offline ! :x:"
             fi
-          done
+          done | tee -a README.md
+          echo ::set-output name=server-status::$(cat README.md)
       - name: check website status
+        id: check-website-status
         run: |
-          date
-          status=$(curl -sI  https://omniedge.io | head -1 | awk '{print $2}'); [ $status -eq 200 ] && echo "OmniEdge.io is online."  || echo "OmniEdge.io is offline"
+          echo "## website status: " | tee -a README.md
+          status=$(curl -sI  https://omniedge.io | head -1 | awk '{print $2}'); [ $status -eq 200 ] && echo " - omniedge.io is Online ! :white_check_mark:" | tee -a README.md || echo "- omniedge.io is Offline ! :x:" tee -a README.md     
+      - name: Commit files
+        run: |
+          git config --local user.email "github-actions@omniedge.io"
+          git config --local user.name "github-actions"
+          git commit -m "Update server status" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          force_with_lease: true
