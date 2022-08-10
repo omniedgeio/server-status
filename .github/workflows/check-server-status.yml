@@ -20,6 +20,7 @@ jobs:
         run: |
           sudo -E apt-get -y update
           sudo -E apt-get install -y net-tools
+          sudo hostname omniedge-githubaction
 
       - name: OmniEdge for Github Action
         uses: omniedgeio/github-action@v1
