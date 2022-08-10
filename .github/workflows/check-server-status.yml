@@ -40,9 +40,11 @@ jobs:
           do
             echo -n "- $name "
             if [ "$name" = "HongKong-CN," ]; then
-              nc -v -w 2 -u "$ip" ${server_porthk} &>/dev/null && echo "is Online ! :white_check_mark: " || echo "is Offline ! :x:"
+              nc -v -w 2 -u -z "$ip" ${server_porthk} &>/dev/null && echo "is Online ! :white_check_mark: " || echo "is Offline ! :x:"
+              sleep 2
             else
-              nc -v -w 2 -u "$ip" ${server_port} &>/dev/null && echo " is Online  ! :white_check_mark:" || echo " is Offline ! :x:"
+              nc -v -w 2 -u -z "$ip" ${server_port} &>/dev/null && echo " is Online  ! :white_check_mark:" || echo " is Offline ! :x:"
+              sleep 2
             fi
           done | tee -a README.md
           echo ::set-output name=server-status::$(cat README.md)
