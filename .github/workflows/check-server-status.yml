@@ -5,6 +5,8 @@ env:
   server_porthk: ${{ secrets.PORTHK }}
   api_url: ${{secrets.API_URL}}
   api_port: ${{secrets.API_PORT}}
+  devapi_url: ${{secrets.DEVAPI_URL}}
+  devapi_port: ${{secrets.DEVAPI_PORT}}
 on:
   push:
     branches:
@@ -56,7 +58,8 @@ jobs:
         id: check-API-status
         run: |
           echo "## API status: " | tee -a README.md
-          nc -v -w 3 -u -z ${api_url} ${api_port} &>/dev/null && echo " API is Online  ! :white_check_mark:" | tee -a README.md || echo " API is Offline ! :x:" | tee -a README.md
+          nc -v -w 3 -u -z ${api_url} ${api_port} &>/dev/null && echo " - Prod API is Online  ! :white_check_mark:" | tee -a README.md || echo " - Prod API is Offline ! :x:" | tee -a README.md
+          nc -v -w 3 -u -z ${devapi_url} ${devapi_port} &>/dev/null && echo " - Dev API is Online  ! :white_check_mark:" | tee -a README.md || echo " - Dev API is Offline ! :x:" | tee -a README.md  
 
       - name: check website status
         id: check-website-status
