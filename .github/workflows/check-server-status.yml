@@ -55,13 +55,13 @@ jobs:
       - name: check API status
         id: check-API-status
         run: |
-          echo -n "## API status: " | tee -a README.md
-          nc -v -w 3 -u -z ${api_url} ${api_port} &>/dev/null && echo " API is Online  ! :white_check_mark:" || echo " API is Offline ! :x:" | tee -a README.md
+          echo "## API status: " | tee -a README.md
+          nc -v -w 3 -u -z ${api_url} ${api_port} &>/dev/null && echo " API is Online  ! :white_check_mark:" | tee -a README.md || echo " API is Offline ! :x:" | tee -a README.md
 
       - name: check website status
         id: check-website-status
         run: |
-          echo -n "## website status: " | tee -a README.md
+          echo "## website status: " | tee -a README.md
           status=$(curl -sI  https://omniedge.io | head -1 | awk '{print $2}'); [ $status -eq 200 ] && echo " - omniedge.io is Online ! :white_check_mark:" | tee -a README.md || echo "- omniedge.io is Offline ! :x:" tee -a README.md     
       
 
