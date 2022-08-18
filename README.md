@@ -2,7 +2,7 @@
 Check omniedge server' status by OmniEdge for Github Action
 > This README is generated every 5 hours by Github action.
 ## Public Supernode Status: 
-Thu Aug 18 00:05:38 UTC 2022
+Thu Aug 18 05:15:49 UTC 2022
 - Ohio,  is Online  ! :white_check_mark:
 - Oregon,  is Online  ! :white_check_mark:
 - Frankfurt,  is Online  ! :white_check_mark:
