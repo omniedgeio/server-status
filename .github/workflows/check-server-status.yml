@@ -37,10 +37,11 @@ jobs:
         run: |
           rm README.md && touch README.md
           echo "# Server Status" | tee -a README.md
-          echo "Check omniedge server' status by OmniEdge for Github Action" | tee -a README.md
+          echo "Check omniedge server status by OmniEdge for Github Action" | tee -a README.md
           echo "> This README is generated every 5 hours by Github action." | tee -a README.md
-          echo "## Public Supernode Status: " | tee -a README.md
+          echo "## Last updated:" | tee -a README.md
           date | tee -a README.md
+          echo "## Public Supernode Status: " | tee -a README.md
           echo "|Location|Cloud Vendor|Specification|Version|**Status**|" |tee -a README.md
           echo "|--|--|--|--|--|" |tee -a README.md
           echo "${server_ips}" | while read name ip; 
