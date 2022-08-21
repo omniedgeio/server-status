@@ -45,18 +45,18 @@ jobs:
           echo "|--|--|--|--|--|" |tee -a README.md
           echo "${server_ips}" | while read name ip; 
           do
-            echo -n "- $name "
             if [ "$name" = "HongKong," ]; then
-              nc -v -w 3 -u -z "$ip" ${server_porthk} &>/dev/null && echo "|$name|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni| Offline ! :x:|"
+              nc -v -w 3 -u -z "$ip" ${server_porthk} &>/dev/null && echo "|$name|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni| Offline ! :x:|" | sed 's/,//g'
               sleep 1
             elif [ "$name" = "Taipei," ]; then
-              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|$name|GCP|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name|GCP|1vCPU / 0.5GB RAM|	2.6-stable-omni| Offline ! :x:|"
+              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|$name|GCP|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name|GCP|1vCPU / 0.5GB RAM|	2.6-stable-omni| Offline ! :x:|" | sed 's/,//g'
               sleep 1
             else
-              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|$name|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni| Offline ! :x:|"
+              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|$name|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni| Offline ! :x:|" | sed 's/,//g'
               sleep 1
             fi
           done | tee -a README.md
+        
           echo ::set-output name=server-status::$(cat README.md)
 
       - name: check API status
