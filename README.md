@@ -1,8 +1,9 @@
 # Server Status
-Check omniedge server' status by OmniEdge for Github Action
+Check omniedge server status by OmniEdge for Github Action
 > This README is generated every 5 hours by Github action.
+## Last updated:
+Sun Aug 21 02:52:45 UTC 2022
 ## Public Supernode Status: 
-Sun Aug 21 02:49:00 UTC 2022
 |Location|Cloud Vendor|Specification|Version|**Status**|
 |--|--|--|--|--|
 |Ohio|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|
