@@ -2,7 +2,7 @@
 Check omniedge server status by OmniEdge for Github Action
 > This README is generated every 5 hours by Github action.
 ## Last updated:
-Tue Nov  1 15:02:12 UTC 2022
+Tue Nov  1 16:48:38 UTC 2022
 ## Public Supernode Status: 
 |Location|Cloud Vendor|Specification|Version|**Status**|
 |--|--|--|--|--|
@@ -14,9 +14,7 @@ Tue Nov  1 15:02:12 UTC 2022
 |Mumbai|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|
 |SaoPaulo|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|
 |Milan|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|
-|Singapore|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|
-|HongKong|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni|Online :white_check_mark:|
-|Taipei|GCP|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|
+|Singapore,HongKong,Taipei|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni|Online :white_check_mark:|
 ## API status: 
  - Prod API is Online  ! :white_check_mark:
  - Dev API is Online  ! :white_check_mark:
