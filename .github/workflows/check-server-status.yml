@@ -48,10 +48,10 @@ jobs:
           do
             name_output=$(echo $name | sed 's/,//g')
             if [ "$name_output" = "Singapore" ]; then
-              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|Southeast Asia|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|Southeast Asia|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni| Offline ! :x:|" 
+              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|Southeast Asia|AWS|1vCPUs / 0.5 GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|Southeast Asia|AWS|2vCPUs / 1GB RAM|	2.6-stable-omni| Offline ! :x:|" 
               sleep 1
             else
-              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|$name_output|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name_output|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni| Offline ! :x:|"
+              nc -v -w 3 -u -z "$ip" ${server_port} &>/dev/null && echo "|$name_output|AWS|1vCPU / 0.5 GB RAM|	2.6-stable-omni|Online :white_check_mark:|" || echo "|$name_output|AWS|1vCPU / 0.5GB RAM|	2.6-stable-omni| Offline ! :x:|"
               sleep 1
             fi
           done | tee -a README.md
