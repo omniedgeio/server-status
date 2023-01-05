@@ -2,7 +2,7 @@
 Check omniedge server status by OmniEdge for Github Action
 > This README is generated every 5 hours by Github action.
 ## Last updated:
-Thu Jan  5 10:02:06 UTC 2023
+Thu Jan  5 15:02:02 UTC 2023
 ## Public Supernode Status: 
 |Location|Cloud Vendor|Specification|Version|**Status**|
 |--|--|--|--|--|
