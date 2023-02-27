@@ -42,6 +42,7 @@ jobs:
           echo "## Last updated:" | tee -a README.md
           date | tee -a README.md
           echo "## Public Supernode Status: " | tee -a README.md
+          echo "Public Supernode is only used for test only, for production please set up your own supernode, check [Customize Supernode](https://omniedge.io/docs/article/install/customize-supernode) to setup your own supernode: " | tee -a README.md
           echo "|Location|Cloud Vendor|Specification|Version|**Status**|" |tee -a README.md
           echo "|--|--|--|--|--|" |tee -a README.md
           echo "${server_ips}" | while read name ip; 
