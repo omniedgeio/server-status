@@ -2,8 +2,9 @@
 Check omniedge server status by OmniEdge for Github Action
 > This README is generated every 5 hours by Github action.
 ## Last updated:
-Mon Feb 27 12:27:07 UTC 2023
+Mon Feb 27 12:39:37 UTC 2023
 ## Public Supernode Status: 
+Public Supernode is only used for test only, for production please set up your own supernode, check [Customize Supernode](https://omniedge.io/docs/article/install/customize-supernode) to setup your own supernode: 
 |Location|Cloud Vendor|Specification|Version|**Status**|
 |--|--|--|--|--|
 |<del>Ohio</del>|<del>AWS</del>|<del>1vCPU</del> / <del>0.5 GB RAM</del>|<del>	2.6-stable-omni</del>|<del>Online</del>|
