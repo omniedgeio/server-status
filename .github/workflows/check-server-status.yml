@@ -10,9 +10,9 @@ env:
 on:
   push:
     branches:
-      - main
+#       - main
   schedule:
-  - cron: "0 */5 * * *"
+#   - cron: "0 */5 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
